@@ -2,6 +2,7 @@ module Test.Main where
 
 import Prelude (Unit(), bind)
 
+import Test.ESTree.Expression (checkExpression)
 import Test.ESTree.Position (checkPosition)
 import Test.ESTree.SourceLocation (checkSourceLocation)
 
@@ -12,3 +13,4 @@ main :: QC () Unit
 main = do
   checkPosition
   checkSourceLocation
+  checkExpression
