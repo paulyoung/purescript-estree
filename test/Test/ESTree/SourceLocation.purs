@@ -13,7 +13,7 @@ import Prelude (Unit(), ($), (++), (==), (<$>), bind, return, show)
 import Test.ESTree.Position (FakePosition(..), showPositionJSON)
 import Test.Helpers (showTestFailure)
 import Test.QuickCheck (QC(), Result(), (<?>), quickCheck)
-import Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
+import Test.QuickCheck.Arbitrary (class Arbitrary, arbitrary)
 
 
 checkSourceLocation :: QC () Unit

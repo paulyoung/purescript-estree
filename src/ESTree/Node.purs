@@ -2,12 +2,12 @@ module ESTree.Node where
 
 import Data.Either (Either(Left))
 import Data.Foreign (ForeignError(JSONError))
-import Data.Foreign.Class (IsForeign, readProp, read)
-import Data.Generic (Generic, gCompare, gEq, gShow)
+import Data.Foreign.Class (class IsForeign, readProp, read)
+import Data.Generic (class Generic, gCompare, gEq, gShow)
 
 import ESTree.Expression (Expression())
 
-import Prelude (Eq, Ord, Show, ($), (++), bind, return)
+import Prelude (class Eq, class Ord, class Show, ($), (++), bind, return)
 
 
 data Node

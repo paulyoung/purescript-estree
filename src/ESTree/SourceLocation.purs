@@ -1,13 +1,13 @@
 module ESTree.SourceLocation where
 
-import Data.Foreign.Class (IsForeign)
+import Data.Foreign.Class (class IsForeign)
 import Data.Foreign.Generic (defaultOptions, readGeneric)
-import Data.Generic (Generic, gCompare, gEq, gShow)
+import Data.Generic (class Generic, gCompare, gEq, gShow)
 import Data.Maybe (Maybe())
 
 import ESTree.Position (Position())
 
-import Prelude (Eq, Ord, Show, ($))
+import Prelude (class Eq, class Ord, class Show, ($))
 
 
 data SourceLocation = SourceLocation

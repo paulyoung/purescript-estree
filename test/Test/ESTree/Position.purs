@@ -7,11 +7,11 @@ import Data.Foreign.Class (readJSON)
 
 import ESTree.Position (Position(..))
 
-import Prelude (Show, Unit(), ($), (++), (==), (<$>), bind, return, show)
+import Prelude (Unit(), ($), (++), (==), (<$>), bind, return, show)
 
 import Test.Helpers (showTestFailure)
 import Test.QuickCheck (QC(), Result(), (<?>), quickCheck)
-import Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
+import Test.QuickCheck.Arbitrary (class Arbitrary, arbitrary)
 
 
 checkPosition :: QC () Unit

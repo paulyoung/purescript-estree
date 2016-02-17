@@ -4,16 +4,15 @@ import Control.Monad.Eff.Console (log)
 
 import Data.Either (Either(Right))
 import Data.Foreign.Class (readJSON)
-import Data.Generic (Generic)
 
 import ESTree.Node (Node(..))
 
-import Prelude (Show, Unit(), (==), (<$>), bind)
+import Prelude (Unit(), (==), (<$>), bind)
 
 import Test.ESTree.Expression (FakeExpression(..), showExpressionJSON)
 import Test.Helpers (showTestFailure)
 import Test.QuickCheck (QC(), Result(), (<?>), quickCheck)
-import Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
+import Test.QuickCheck.Arbitrary (class Arbitrary, arbitrary)
 import Test.QuickCheck.Gen (elements)
 
 

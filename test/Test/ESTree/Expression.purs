@@ -10,12 +10,12 @@ import Data.Maybe (Maybe(Just), maybe)
 
 import ESTree.Expression (Expression(..))
 
-import Prelude (Show, Unit(), (++), (==), (<$>), bind)
+import Prelude (Unit(), (++), (==), (<$>), bind)
 
 import Test.ESTree.SourceLocation (FakeSourceLocation(..), showSourceLocationJSON)
 import Test.Helpers (showTestFailure)
 import Test.QuickCheck (QC(), Result(), (<?>), quickCheck')
-import Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
+import Test.QuickCheck.Arbitrary (class Arbitrary, arbitrary)
 import Test.QuickCheck.Gen (elements)
 
 
