@@ -8,6 +8,7 @@
     "test": "npm run clean-test; npm run build; pulp test"
   },
   "devDependencies": {
-    "pulp": "^8.0.0"
+    "pulp": "^8.0.0",
+    "purescript-psa": "^0.3.2"
   }
 }

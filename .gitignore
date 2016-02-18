@@ -3,3 +3,4 @@
 /.pulp-cache/
 /output/
 /.psci*
+/.psa-stash
