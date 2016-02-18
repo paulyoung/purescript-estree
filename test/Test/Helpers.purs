@@ -1,6 +1,6 @@
 module Test.Helpers where
 
-import Prelude (Show, (++), show)
+import Prelude (class Show, (++), show)
 
 
 showTestFailure :: forall a b c. (Show a) => (Show b) => (Show c) => a -> b -> c -> String
