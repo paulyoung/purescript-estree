@@ -4,6 +4,8 @@
     "postinstall": "pulp dep install",
     "build": "pulp build",
     "test": "npm run build; pulp test"
+    "clean-build": "rm -rf output/ESTree.*",
+    "clean-test": "rm -rf output/Test.Main output/Test.Helpers output/Test.ESTree.*",
   },
   "devDependencies": {
     "pulp": "^8.0.0"
