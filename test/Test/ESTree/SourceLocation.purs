@@ -42,7 +42,9 @@ showSourceLocationJSON (SourceLocation sourceLocation) =
   "}"
 
 
-newtype FakeSourceLocation = FakeSourceLocation SourceLocation
+newtype FakeSourceLocation
+  = FakeSourceLocation SourceLocation
+
 
 instance arbSourceLocation :: Arbitrary FakeSourceLocation where
   arbitrary = FakeSourceLocation <$> do

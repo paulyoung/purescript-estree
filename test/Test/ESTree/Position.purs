@@ -39,7 +39,9 @@ showPositionJSON (Position position) =
   "}"
 
 
-newtype FakePosition = FakePosition Position
+newtype FakePosition
+  = FakePosition Position
+
 
 instance arbPosition :: Arbitrary FakePosition where
   arbitrary = FakePosition <$> do

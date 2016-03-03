@@ -53,7 +53,9 @@ showNodeJSON :: Node -> String
 showNodeJSON (Expression expression) = showExpressionJSON expression
 
 
-newtype FakeNode = FakeNode Node
+newtype FakeNode
+  = FakeNode Node
+
 
 instance arbNode :: Arbitrary FakeNode where
   arbitrary = FakeNode <$> do

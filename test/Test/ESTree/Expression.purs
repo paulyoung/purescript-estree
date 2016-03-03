@@ -71,7 +71,9 @@ showExpressionJSON (ArrayExpression expression) =
   elements = intercalate ", " (showExpressionJSON <$> expression.elements)
 
 
-newtype FakeExpression = FakeExpression Expression
+newtype FakeExpression
+  = FakeExpression Expression
+
 
 instance arbExpression :: Arbitrary FakeExpression where
   arbitrary = FakeExpression <$> do
