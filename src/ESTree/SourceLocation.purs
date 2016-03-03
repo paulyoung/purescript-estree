@@ -16,16 +16,21 @@ data SourceLocation = SourceLocation
   , end :: Position
   }
 
+
 derive instance genericSourceLocation :: Generic SourceLocation
+
 
 instance isForeignSourceLocation :: IsForeign SourceLocation where
   read = readGeneric $ defaultOptions { unwrapNewtypes = true }
 
+
 instance showSourceLocation :: Show SourceLocation where
   show = gShow
 
+
 instance eqSourceLocation :: Eq SourceLocation where
   eq = gEq
+
 
 instance ordSourceLocation :: Ord SourceLocation where
   compare = gCompare

@@ -12,16 +12,21 @@ data Position = Position
   , column :: Int
   }
 
+
 derive instance genericPosition :: Generic Position
+
 
 instance isForeignPosition :: IsForeign Position where
   read = readGeneric $ defaultOptions { unwrapNewtypes = true }
 
+
 instance showPosition :: Show Position where
   show = gShow
 
+
 instance eqPosition :: Eq Position where
   eq = gEq
+
 
 instance ordPosition :: Ord Position where
   compare = gCompare

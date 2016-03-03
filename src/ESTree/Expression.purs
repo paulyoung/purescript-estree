@@ -23,7 +23,9 @@ data Expression
     , elements :: Array Expression
     }
 
+
 derive instance genericExpression :: Generic Expression
+
 
 instance isForeignExpression :: IsForeign Expression where
   read f = do
@@ -49,11 +51,14 @@ instance isForeignExpression :: IsForeign Expression where
       unrecognized -> do
         Left $ JSONError $ "Unrecognized Expression type: \"" ++ unrecognized ++ "\""
 
+
 instance showSourceLocation :: Show Expression where
   show = gShow
 
+
 instance eqExpression :: Eq Expression where
   eq = gEq
+
 
 instance ordExpression :: Ord Expression where
   compare = gCompare

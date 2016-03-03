@@ -13,7 +13,9 @@ import Prelude (class Eq, class Ord, class Show, ($), (++), bind, return)
 data Node
   = Expression Expression
 
+
 derive instance genericNode :: Generic Node
+
 
 instance isForeignNode :: IsForeign Node where
   read f = do
@@ -35,8 +37,10 @@ instance isForeignNode :: IsForeign Node where
 instance showNode :: Show Node where
   show = gShow
 
+
 instance eqNode :: Eq Node where
   eq = gEq
+
 
 instance ordNode :: Ord Node where
   compare = gCompare
