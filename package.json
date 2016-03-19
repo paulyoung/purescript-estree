@@ -2,10 +2,8 @@
   "private": true,
   "scripts": {
     "postinstall": "bower install",
-    "build": "npm run clean-build; rm -rf output/ESTree.*; pulp build",
-    "clean-build": "rm -rf output/ESTree.*",
-    "clean-test": "rm -rf output/Test.Main output/Test.Helpers output/Test.ESTree.*",
-    "test": "npm run clean-test; npm run build; pulp test"
+    "build": "pulp build --include test --stash",
+    "test": "npm run build; pulp test"
   },
   "devDependencies": {
     "bower": "^1.7.7",
