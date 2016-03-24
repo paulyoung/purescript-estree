@@ -9,8 +9,9 @@ import Data.Foreign.Class (readJSON)
 import Data.Maybe (Maybe(Just), maybe)
 
 import ESTree.Expression (Expression(..))
+import ESTree.Identifier (Identifier(Identifier))
 
-import Prelude (Unit(), (++), (==), (<$>), bind)
+import Prelude (Unit(), ($), (++), (==), (<$>), bind)
 
 import Test.ESTree.SourceLocation (FakeSourceLocation(..), showSourceLocationJSON)
 import Test.Helpers (showTestFailure)
@@ -53,6 +54,12 @@ checkExpression = do
 
 showExpressionJSON :: Expression -> String
 
+showExpressionJSON (IdentifierExpression (Identifier expression)) =
+  "{ \"type\": \"" ++ expression.type ++ "\"" ++
+  (maybe "" (\x -> ", \"loc\": " ++ showSourceLocationJSON x) expression.loc) ++
+  ", \"name\": \"" ++ expression.name ++ "\"" ++
+  "}"
+
 showExpressionJSON (ThisExpression expression) =
   "{ \"type\": \"" ++ expression.type ++ "\"" ++
   (maybe "" (\x -> ", \"loc\": " ++ showSourceLocationJSON x) expression.loc) ++
@@ -77,14 +84,24 @@ newtype FakeExpression
 
 instance arbExpression :: Arbitrary FakeExpression where
   arbitrary = FakeExpression <$> do
+    (FakeSourceLocation identifierLoc) <- arbitrary
+    identifierName <- arbitrary
+
     (FakeSourceLocation thisLoc) <- arbitrary
     (FakeSourceLocation arrayLoc) <- arbitrary
 
-    elements (thisExpression thisLoc)
-      [ (arrayExpression thisLoc arrayLoc)
+    elements (identifierExpression identifierLoc identifierName)
+      [ (thisExpression thisLoc)
+      , (arrayExpression thisLoc arrayLoc)
       ]
 
     where
+
+    identifierExpression loc name = IdentifierExpression $ Identifier
+      { type: "Identifier"
+      , loc: Just loc
+      , name: name
+      }
 
     thisExpression loc = ThisExpression
       { type: "ThisExpression"

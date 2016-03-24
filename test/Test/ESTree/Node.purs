@@ -11,6 +11,8 @@ import ESTree.Node (Node(..))
 import Prelude (Unit(), (==), (<$>), (++), bind)
 
 import Test.ESTree.Expression (FakeExpression(..), showExpressionJSON)
+import Test.ESTree.Pattern (FakePattern(..), showPatternJSON)
+
 import Test.Helpers (showTestFailure)
 import Test.QuickCheck (QC(), Result(), (<?>), quickCheck')
 import Test.QuickCheck.Arbitrary (class Arbitrary, arbitrary)
@@ -51,6 +53,7 @@ checkNode = do
 
 showNodeJSON :: Node -> String
 showNodeJSON (Expression expression) = showExpressionJSON expression
+showNodeJSON (Pattern pattern) = showPatternJSON pattern
 
 
 newtype FakeNode
@@ -60,7 +63,8 @@ newtype FakeNode
 instance arbNode :: Arbitrary FakeNode where
   arbitrary = FakeNode <$> do
     (FakeExpression expression) <- arbitrary
+    (FakePattern pattern) <- arbitrary
 
     elements (Expression expression)
-      [
+      [ (Pattern pattern)
       ]

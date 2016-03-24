@@ -7,13 +7,15 @@ import Data.Foreign.NullOrUndefined (runNullOrUndefined)
 import Data.Generic (class Generic, gCompare, gEq, gShow)
 import Data.Maybe (Maybe())
 
+import ESTree.Identifier (Identifier(Identifier))
 import ESTree.SourceLocation (SourceLocation())
 
 import Prelude (class Eq, class Ord, class Show, ($), (++), (<$>), bind, return)
 
 
 data Expression
-  = ThisExpression
+  = IdentifierExpression Identifier
+  | ThisExpression
     { type :: String
     , loc :: Maybe SourceLocation
     }
@@ -33,6 +35,15 @@ instance isForeignExpression :: IsForeign Expression where
     loc <- runNullOrUndefined <$> readProp "loc" f
 
     case _type of
+      "Identifier" -> do
+        name <- readProp "name" f
+
+        return $ IdentifierExpression $ Identifier
+          { type: _type
+          , loc: loc
+          , name: name
+          }
+
       "ThisExpression" -> do
         return $ ThisExpression
           { type: _type
